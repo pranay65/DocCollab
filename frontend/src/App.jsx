@@ -1,54 +1,56 @@
-import React, { useState } from 'react';
-import { 
-  FileText, 
-  Download, 
-  Share2, 
-  Bot, 
-  Users, 
+import React, { useState } from "react";
+import {
+  FileText,
+  Download,
+  Share2,
+  Bot,
+  Users,
   Save,
   LogIn,
   LogOut,
   Plus,
   Edit3,
   Users2,
-  Zap
-} from 'lucide-react';
+  Zap,
+} from "lucide-react";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activeDocument, setActiveDocument] = useState('');
+  const [activeDocument, setActiveDocument] = useState("");
   const [documents] = useState([
-    { id: 1, title: 'Project Proposal', collaborators: 3 },
-    { id: 2, title: 'Meeting Notes', collaborators: 2 },
-    { id: 3, title: 'Research Paper', collaborators: 4 },
+    { id: 1, title: "Project Proposal", collaborators: 3 },
+    { id: 2, title: "Meeting Notes", collaborators: 2 },
+    { id: 3, title: "Research Paper", collaborators: 4 },
   ]);
 
   const features = [
     {
       icon: <Edit3 className="w-6 h-6 text-blue-400" />,
       title: "Real-time Editing",
-      description: "Edit documents in real-time with automatic syncing across all collaborators."
+      description:
+        "Edit documents in real-time with automatic syncing across all collaborators.",
     },
     {
       icon: <Users2 className="w-6 h-6 text-purple-400" />,
       title: "Team Collaboration",
-      description: "Work together seamlessly with your team members on shared documents."
+      description:
+        "Work together seamlessly with your team members on shared documents.",
     },
     {
       icon: <Bot className="w-6 h-6 text-green-400" />,
       title: "AI Assistant",
-      description: "Get intelligent suggestions and content generation powered by AI."
+      description:
+        "Get intelligent suggestions and content generation powered by AI.",
     },
     {
       icon: <Zap className="w-6 h-6 text-yellow-400" />,
       title: "Instant Sync",
-      description: "Changes are saved and synced instantly across all devices."
-    }
+      description: "Changes are saved and synced instantly across all devices.",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-      {/* Navigation Bar */}
       <nav className="fixed w-full z-50 border-b border-gray-700 bg-gray-900/90 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -82,24 +84,23 @@ function App() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         {isLoggedIn ? (
           <div className="grid grid-cols-12 gap-8 py-8">
-            {/* Sidebar */}
             <div className="col-span-12 lg:col-span-3 space-y-4">
               <button className="w-full flex items-center space-x-2 px-4 py-3 rounded-lg bg-blue-500 hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
                 <Plus className="w-5 h-5" />
                 <span>New Document</span>
               </button>
-              
+
               <div className="bg-gray-800/50 rounded-lg p-4 backdrop-blur-sm border border-gray-700">
                 <h2 className="text-lg font-semibold mb-4">Your Documents</h2>
                 <div className="space-y-3">
-                  {documents.map(doc => (
+                  {documents.map((doc) => (
                     <div
                       key={doc.id}
                       onClick={() => setActiveDocument(doc.title)}
                       className={`p-3 rounded-lg cursor-pointer transition-all duration-300 ${
                         activeDocument === doc.title
-                          ? 'bg-blue-500/20 border border-blue-500/50'
-                          : 'hover:bg-gray-700/50 border border-transparent'
+                          ? "bg-blue-500/20 border border-blue-500/50"
+                          : "hover:bg-gray-700/50 border border-transparent"
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -167,7 +168,7 @@ function App() {
                 Collaborate in Real-Time
               </h1>
               <p className="text-xl text-gray-400 mb-12 max-w-2xl">
-                Create, edit, and share documents with your team in real-time. 
+                Create, edit, and share documents with your team in real-time.
                 Experience the future of collaborative document editing.
               </p>
               <button
@@ -184,14 +185,16 @@ function App() {
             {/* Features Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 py-16 bg-gray-900/50">
               {features.map((feature, index) => (
-                <div 
+                <div
                   key={index}
                   className="p-6 rounded-lg bg-gray-800/50 border border-gray-700 backdrop-blur-sm hover:border-gray-600 transition-all duration-300"
                 >
                   <div className="mb-4 p-3 rounded-lg bg-gray-700/50 w-fit">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-400">{feature.description}</p>
                 </div>
               ))}
